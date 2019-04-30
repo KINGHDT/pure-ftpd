@@ -1,0 +1,31 @@
+version: '2'
+
+# Usage example: https://github.com/stilliard/docker-pure-ftpd/wiki/Docker-stack-with-Wordpress-&-FTP
+
+services:
+  ftpd_server:
+    image: stilliard/pure-ftpd:hardened
+    container_name: pureftpd
+    ports:
+      - "6601:21"
+      - "40000-40099:40000-40099"
+    volumes:
+      - "./pureftp_data:/home/www/"
+      - "./pureftp_passwd:/etc/pure-ftpd/passwd"
+      - "./logs/:/var/log/"
+# uncomment for ssl/tls, see https://github.com/stilliard/docker-pure-ftpd#tls
+#      - "/folder_on_disk/ssl:/etc/ssl/private/"
+    environment:
+      PUBLICHOST: "localhost"
+      FTP_USER_NAME: "www"
+      FTP_USER_PASS: "1HqplfubWdi8"
+      FTP_USER_HOME: "/home/www"
+      ADDED_FLAGS: "-d -d"
+      FTP_PASSIVE_PORTS: "40000:40099"
+      FTP_MAX_CLIENTS: "50"
+      FTP_MAX_CONNECTIONS: "5"
+
+
+# also for ssl/tls:
+#      ADDED_FLAGS: "--tls=2"
+    restart: always
