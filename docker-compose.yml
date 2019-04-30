@@ -5,7 +5,7 @@ version: '2'
 services:
   ftpd_server:
     image: stilliard/pure-ftpd:hardened
-    container_name: pureftpd
+    container_name: pure-ftpd
     ports:
       - "6601:21"
       - "40000-40099:40000-40099"
