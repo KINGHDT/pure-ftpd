@@ -11,7 +11,7 @@ services:
       - "40000-40099:40000-40099"
     volumes:
       - "./pureftp_data:/home/www/"
-      - "./pureftp_passwd:/etc/pure-ftpd/passwd"
+      - "./passwd:/etc/pure-ftpd/passwd"
       - "./logs/:/var/log/"
 # uncomment for ssl/tls, see https://github.com/stilliard/docker-pure-ftpd#tls
 #      - "/folder_on_disk/ssl:/etc/ssl/private/"
